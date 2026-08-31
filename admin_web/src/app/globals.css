@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/*
+ * Palette claire "industrielle" (meme identite que la palette sombre
+ * d'origine -- accent orange, structure identique -- fonds et textes inverses).
+ */
+@theme {
+  --color-page: #f4f3f1;
+  --color-sidebar: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #ecebe7;
+  --color-border: rgba(0, 0, 0, 0.1);
+
+  --color-ink: #17160f;
+  --color-ink-secondary: #55534a;
+  --color-ink-muted: #83817a;
+  --color-grid: #e2e0da;
+
+  --color-accent: #d95926;
+  --color-accent-hover: #c14e1f;
+  --color-accent-soft: rgba(217, 89, 38, 0.12);
+
+  --color-good: #0ca30c;
+  --color-good-soft: rgba(12, 163, 12, 0.15);
+  --color-warning: #fab219;
+  --color-warning-soft: rgba(250, 178, 25, 0.15);
+  --color-serious: #ec835a;
+  --color-serious-soft: rgba(236, 131, 90, 0.15);
+  --color-critical: #d03b3b;
+  --color-critical-soft: rgba(208, 59, 59, 0.15);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+::selection {
+  background: var(--color-accent-soft);
+}

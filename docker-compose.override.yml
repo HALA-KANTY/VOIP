@@ -1,0 +1,31 @@
+# Overlay de developpement local UNIQUEMENT (non utilise en production,
+# voir DEPLOYMENT.md). Docker Compose le charge automatiquement en plus de
+# docker-compose.yml. Ajoute un conteneur Asterisk de test et fait pointer
+# le volume /etc/asterisk du backend vers un volume partage avec ce
+# conteneur, au lieu du bind-mount vers /etc/asterisk de l'hote (qui suppose
+# un vrai serveur Asterisk sur la meme machine, pas le cas ici).
+
+services:
+  asterisk:
+    build:
+      context: .
+      dockerfile: docker/asterisk/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5060:5060/udp"
+      - "10000-10020:10000-10020/udp"
+    volumes:
+      - asterisk_etc:/etc/asterisk
+    networks: [internal]
+
+  backend:
+    volumes:
+      - asterisk_etc:/etc/asterisk:rw
+    environment:
+      ASTERISK_CONFIG_DIR: /etc/asterisk
+    depends_on:
+      asterisk:
+        condition: service_started
+
+volumes:
+  asterisk_etc:

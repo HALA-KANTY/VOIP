@@ -1,0 +1,6 @@
+# A copier vers /etc/asterisk/voip-billing.conf (lecture seule pour root,
+# car il contient un secret). Lu par les scripts AGI agi-bin/*.py.
+
+api_base = https://voip.example.com
+ami_endpoints_secret = change_moi_secret_endpoints
+timeout = 3

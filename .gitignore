@@ -1,0 +1,7 @@
+# Secrets locaux (copier .env.example -> .env)
+.env
+.env.local
+.env.*.local
+
+# Certificats obtenus localement pour des tests
+nginx/conf.d/default.conf.bak
